@@ -9,5 +9,5 @@ export const likeController = async (req: Request<{commentId: string}, {}, LikeI
     
     await likeService.setCommentLike({commentId, status, authorId})
 
-    res.status(204)
+    res.sendStatus(204)
 }
