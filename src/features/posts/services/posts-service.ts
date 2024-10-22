@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import { PostDbType } from "../../../db/post-db-type";
+import { PostDbType } from "../types/posts-types";
 import { setPostsQueryParams } from "../../../helpers/helper";
 import { PostInputModel, PostViewModel } from "../types/posts-types";
 import { blogsService } from "../../blogs/services/blogs-service";

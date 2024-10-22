@@ -7,7 +7,15 @@ export const commentsRepository = {
     async createComment(newComment: CommentDbType): Promise<CommentViewModel> {
         await commentsCollection.insertOne(newComment)
 
-        return this.mapComment(newComment)
+        const comment = this.mapComment(newComment)
+        
+        comment.likesInfo = {
+            likesCount: 0,
+            dislikesCount: 0,
+            myStatus: "None"
+        }
+
+        return comment
     },
 
     async updateComment(id: string, newData: CommentInputModel): Promise<boolean> {
@@ -35,7 +43,7 @@ export const commentsRepository = {
         return comment ? this.mapComment(comment) : null
     },
 
-    mapComment(comment: CommentDbType) {
+    mapComment(comment: CommentDbType): CommentViewModel {
         return {
             id: comment._id!.toString(),
             content: comment.content,

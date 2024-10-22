@@ -1,10 +1,11 @@
 import { Collection, MongoClient } from "mongodb";
 import { SETTINGS } from "../settings";
 import { BlogDbType } from "./blog-db-type";
-import { PostDbType } from "./post-db-type";
+import { PostDbType } from "../features/posts/types/posts-types";
 import { UserDbType } from "./user-db-type";
 import { CommentDbType } from "./comment-db-type";
 import { MongoMemoryServer } from "mongodb-memory-server";
+import { LikeDbType } from "../features/likes/types/likeTypes";
 
 
 // const client: MongoClient = new MongoClient(SETTINGS.MONGO_DB.MONGO_URI)
@@ -19,6 +20,7 @@ export let blogsCollection: Collection<BlogDbType>
 export let postsCollection: Collection<PostDbType>
 export let usersCollection: Collection<UserDbType>
 export let commentsCollection: Collection<CommentDbType>
+export let likesCollection: Collection<LikeDbType>
 
 export async function runDb(mongoMemoryServer = false) {
     if (mongoMemoryServer) {
@@ -36,6 +38,7 @@ export async function runDb(mongoMemoryServer = false) {
     postsCollection = db.collection(SETTINGS.MONGO_DB.POST_COLLECTION_NAME)
     usersCollection = db.collection(SETTINGS.MONGO_DB.USER_COLLECTION_NAME)
     commentsCollection = db.collection(SETTINGS.MONGO_DB.COMMENT_COLLECTION_NAME)
+    likesCollection = db.collection(SETTINGS.MONGO_DB.LIKE_COLLECTION_NAME)
 
     try {
         

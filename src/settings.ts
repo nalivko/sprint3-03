@@ -22,11 +22,12 @@ export const SETTINGS = {
         POST_COLLECTION_NAME: "posts",
         USER_COLLECTION_NAME: "users",
         COMMENT_COLLECTION_NAME: "comments",
+        LIKE_COLLECTION_NAME: "likes",
         AUTH_SESSION_COLLECTION_NAME: "authSessions",
         API_REQUESTS_COLLECTION_NAME: "apiRequests",
     },
     AC_SECRET: 'secretkey',
     REFRESH_SECRET: 'refreshsecretkey',
-    AC_TIME: '10s',
-    REFRESH_TIME: '20s'
+    AC_TIME: '10000s',
+    REFRESH_TIME: '20000s'
 }

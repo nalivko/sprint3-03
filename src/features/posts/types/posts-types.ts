@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb"
+
 export type PostInputModel = {
     title: string,
     shortDescription: string,
@@ -15,10 +17,20 @@ export type PostViewModel = {
     createdAt: string
 }
 
-export type BlogsViewCollectionModel = {
-    pagesCount: number,
-    page: number,
-    pageSize: number,
-    totalCount: number,
-    items: Array<PostViewModel>
-  }
+export type PostDbType = {
+  _id?: ObjectId,
+  title: string,
+  shortDescription: string,
+  content: string,
+  blogId: ObjectId,
+  blogName: string,
+  createdAt: string
+}
+
+// export type BlogsViewCollectionModel = {
+//     pagesCount: number,
+//     page: number,
+//     pageSize: number,
+//     totalCount: number,
+//     items: Array<PostViewModel>
+//   }

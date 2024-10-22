@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import { BlogDbType } from "../../../db/blog-db-type";
-import { PostDbType } from "../../../db/post-db-type";
+import { PostDbType } from "../../posts/types/posts-types";
 import { setPostsQueryParams, setBlogsQueryParams } from "../../../helpers/helper";
 import { BlogInputModel, BlogsViewCollectionModel, BlogViewModel } from "../types/blogs-types";
 import { PostInputModel } from "../../posts/types/posts-types";

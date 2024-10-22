@@ -1,7 +1,7 @@
 import { Collection, MongoClient } from "mongodb";
 import { SETTINGS } from "../settings";
 import { BlogDbType } from "./blog-db-type";
-import { PostDbType } from "./post-db-type";
+import { PostDbType } from "../features/posts/types/posts-types";
 import { UserDbType } from "./user-db-type";
 import { CommentDbType } from "./comment-db-type";
 import { MongoMemoryServer } from "mongodb-memory-server";

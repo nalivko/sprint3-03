@@ -6,7 +6,8 @@ export type CommentViewModel = {
     id: string,
     content: string,
     commentatorInfo: CommentatorInfo,
-    createdAt: string
+    createdAt: string,
+    likesInfo?: LikesInfo
 }
 
 type CommentatorInfo = {
@@ -14,10 +15,16 @@ type CommentatorInfo = {
     userLogin: string
 }
 
+export type LikesInfo = {
+    likesCount: number,
+    dislikesCount: number,
+    myStatus: string
+}
+
 export type PostCommentsType = {
     pagesCount: number,
     page: number,
     pageSize: number,
     totalCount: number,
-    items: Array<{}>
+    items: Array<CommentViewModel>
 }

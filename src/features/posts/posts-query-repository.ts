@@ -1,4 +1,4 @@
-import { PostDbType } from "../../db/post-db-type"
+import { PostDbType } from "./types/posts-types"
 import { postsRepository } from "./posts-db-repository"
 import { postsCollection } from "../../db/mongodb"
 import { postsQueryParamsType } from "../../helpers/helper"
