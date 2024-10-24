@@ -1,8 +1,8 @@
+import { BlogDbType } from "../../db/blog-db-type"
 import { blogsQueryParamsType } from "../../helpers/helper"
-import { blogsRepository } from "./blogs-db-repository"
 import { BlogModelClass } from "./domain/blog.entity"
 
-export const blogsQueryRepository = {
+export class BlogsQueryRepository {
     async findBlogs(queryParams: blogsQueryParamsType): Promise<any> {
 
         const sortField = queryParams.sortBy
@@ -21,13 +21,24 @@ export const blogsQueryRepository = {
             page: queryParams.pageNumber,
             pageSize: queryParams.pageSize,
             totalCount,
-            items: items.map(blogsRepository.mapBlog)
+            items: items.map(this.mapBlog)
         }
-    },
+    }
 
     getSearchFilter(searchNameTerm: string | null) {
         return searchNameTerm
             ? { name: { $regex: searchNameTerm, $options: 'i' } }
             : {}
+    }
+
+    mapBlog(blog: BlogDbType) {
+        return {
+            id: (blog._id!).toString(),
+            name: blog.name,
+            description: blog.description,
+            websiteUrl: blog.websiteUrl,
+            createdAt: blog.createdAt,
+            isMembership: blog.isMembership
+        }
     }
 }

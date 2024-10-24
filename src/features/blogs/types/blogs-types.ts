@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb"
 export type BlogInputModel = {
     name: string,
     description: string,
@@ -19,4 +20,14 @@ export type BlogsViewCollectionModel = {
     pageSize: number,
     totalCount: number,
     items: Array<BlogViewModel>
-  }
+}
+
+export class BlogModel {
+    constructor(
+        public name: string,
+        public description: string,
+        public websiteUrl: string,
+        public createdAt: string,
+        public isMembership: boolean
+    ) { }
+}

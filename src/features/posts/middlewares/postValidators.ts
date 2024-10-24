@@ -1,7 +1,7 @@
 import { body } from "express-validator";
 import { authMiddleware } from "../../../global-middlewares/authMiddleware";
 import { checkErrorsMiddleware } from "../../../global-middlewares/checkErrorsMiddleware";
-import { blogsRepository } from "../../blogs/blogs-db-repository";
+import { BlogsRepository } from "../../blogs/blogs-db-repository";
 
 export const titleValidator =
     body('title')
@@ -32,6 +32,7 @@ export const blogIdValidator =
         .withMessage('not string')
         .trim()
         .custom(async blogId => {
+            const blogsRepository = new BlogsRepository()
             const blog = await blogsRepository.getBlogById(blogId)
 
             if (!blog) {

@@ -2,11 +2,12 @@ import { ObjectId } from "mongodb";
 import { PostDbType } from "../types/posts-types";
 import { setPostsQueryParams } from "../../../helpers/helper";
 import { PostInputModel, PostViewModel } from "../types/posts-types";
-import { blogsService } from "../../blogs/services/blogs-service";
+import { BlogsService } from "../../blogs/services/blogs-service";
 import { postsRepository } from "../posts-db-repository";
 import { postsQueryRepository } from "../posts-query-repository";
 
 export const postsService = {
+    blogsService: new BlogsService(),
 
     async findPosts(query: { [key: string]: string | undefined }): Promise<{}> {
         const queryParams = setPostsQueryParams(query)
@@ -19,7 +20,7 @@ export const postsService = {
     },
 
     async createPost(post: PostInputModel): Promise<PostViewModel> {
-        const blog = await blogsService.getBlogById(post.blogId)
+        const blog = await this.blogsService.getBlogById(post.blogId)
 
         const newPost: PostDbType = {
             title: post.title,
